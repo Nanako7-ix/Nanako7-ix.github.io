@@ -1,7 +1,7 @@
 # Site settings
 title: Nanako7_ix's Blog                   # 博客标题
 description: "A blog to record my study life." # 博客描述
-url: "https://Nanako7-ix.github.io"  # 你博客的完整 URL
+url: "https://Nanako7-ix.github.io/index.md"  # 你博客的完整 URL
 
 # Author settings
 author:
