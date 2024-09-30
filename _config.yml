@@ -1,0 +1,24 @@
+# Site settings
+title: Nanako7_ix's Blog                   # 博客标题
+description: "A blog to record my study life." # 博客描述
+url: "https://Nanako7-ix.github.io"  # 你博客的完整 URL
+
+# Author settings
+author:
+  name: "Nanako7-ix"               # 作者名字
+  email: "你的邮箱@example.com"   # 作者邮箱
+
+# Build settings
+baseurl: ""                      # 基础 URL (通常留空)
+markdown: kramdown              # Markdown 解析器
+
+# Plugins
+plugins:
+  - jekyll-feed                  # 启用 jekyll-feed 插件以生成 RSS 源
+
+# Social links
+social:
+  github: "Nanako7-ix"           # GitHub 账号
+
+# Permalink settings
+permalink: pretty                # URL 结构设置
