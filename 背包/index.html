@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+<!-- keywords -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Nanako7_ix">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Nanako7_ix">
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    <meta name="description" content="">
+    <meta name="description" content="01背包 其实这个是我在刷了一部分题后重新写的，我长话短说，感觉不是很适合入门但是可以看看  问题导入现在在你面前有 nnn 个物品，每个物品有两个属性：价值 v，与体积 w。你有一个大小为 mmm 的背包，求你能获得的最大的价值 analysis现在直接令 dp[i] 表示大小为 iii 的背包能获取的最大的价值，显然我们要求的是 dp[m]. 我们扫一遍所有的物品，对于每一个物品，我们只有两个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="背包">
+<meta property="og:url" content="http://nanako7-ix.github.io/%E8%83%8C%E5%8C%85/index.html">
+<meta property="og:site_name" content="到这日才发现，曾呼吸过空气">
+<meta property="og:description" content="01背包 其实这个是我在刷了一部分题后重新写的，我长话短说，感觉不是很适合入门但是可以看看  问题导入现在在你面前有 nnn 个物品，每个物品有两个属性：价值 v，与体积 w。你有一个大小为 mmm 的背包，求你能获得的最大的价值 analysis现在直接令 dp[i] 表示大小为 iii 的背包能获取的最大的价值，显然我们要求的是 dp[m]. 我们扫一遍所有的物品，对于每一个物品，我们只有两个">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-04T15:51:32.000Z">
+<meta property="article:author" content="Nanako7_ix">
+<meta property="article:tag" content="背包">
+<meta property="article:tag" content="动态规划">
+<meta name="twitter:card" content="summary">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon.ico">
+    <title>背包 · Nanako7_ix&#39;s Blog</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .footer-fixed-btn,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(
+            -45deg,
+            #444 0,
+            #444 80px,
+            #333 80px,
+            #333 160px
+        );
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link id="stylesheet-fancybox" rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-base" rel="preload" href="/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-mobile" rel="preload" href="/css/mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet';this.media='screen and (max-width: 960px)'">
+    <link id="stylesheet-theme-dark" rel="preload" href="/css/dark.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    <!-- 百度统计  -->
+    <!-- 谷歌统计  -->
+    <!-- Google tag (gtag.js) -->
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha256-TThEtR+XalhWKkfF383YLOrI50NGNeIqrzS+q08afrY=" crossorigin="anonymous"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+        <body class="post-body">
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        <div class="header-sidebar-menu">
+            <div style="padding-left: 1px;">&#xe775;</div>
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href="/">Nanako7_ix's Blog</a>
+        </span>
+    </div>
+    <!-- toggle banner -->
+    <div class="banner">
+        <div class="blog-title header-element">
+            <a href="/">Nanako7_ix&#39;s Blog</a>
+        </div>
+        <div class="post-title header-element">
+            <a href="#" class="post-name">背包</a>
+        </div>
+    </div>
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- donate button -->
+
+    <!-- back to top button -->
+    <div class="footer-fixed-btn footer-fixed-btn--hidden back-top">
+        <div>&#xe639;</div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="    height:50vh;
+">
+    <!-- 主页  -->
+    <!-- 404页  -->
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+                背包
+            <!-- 404 -->
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            <!-- 404 -->
+        </p>
+        <!-- 文章页 meta -->
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                    <div class="post-intro-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="背包">背包</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="动态规划">动态规划</a>
+</div>
+
+                <!-- 文章字数统计 -->
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2024/11/04</span>
+                    <!-- busuanzi -->
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" alt="loading">
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h2><blockquote>
+<p>其实这个是我在刷了一部分题后重新写的，我长话短说，感觉不是很适合入门但是可以看看</p>
+</blockquote>
+<h3 id="问题导入"><a href="#问题导入" class="headerlink" title="问题导入"></a>问题导入</h3><p>现在在你面前有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 个物品，每个物品有两个属性：价值 <code>v</code>，与体积 <code>w</code>。你有一个大小为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 的背包，求你能获得的最大的价值</p>
+<h4 id="analysis"><a href="#analysis" class="headerlink" title="analysis"></a>analysis</h4><p>现在直接令 <code>dp[i]</code> 表示大小为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 的背包能获取的最大的价值，显然我们要求的是 <code>dp[m]</code>.</p>
+<p>我们扫一遍所有的物品，对于每一个物品，我们只有两个决策，装进背包和不装。这两种决策都可能对已有的最优解们 <code>dp[i]</code> 产生影响，于是我们可以得到以下的两种可能。</p>
+<ul>
+<li><code>dp[i] &lt;- dp[i]</code> 不装进背包, 此时的变化就是没有变化.</li>
+<li><code>dp[i] &lt;- dp[i - w] + v</code> 装进背包，此时背包的剩余容量为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>−</mo><mi>w</mi></mrow><annotation encoding="application/x-tex">i - w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7429em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span>，不难想到这种情况下可以获取的最大价值为 <code>dp[i - w] + v</code>.</li>
+</ul>
+<p>所以就能得到：<code>dp[i] = max(dp[i], dp[i - w] + v)</code>，也就是第一种决策带来的变化和第二种决策带来的变化的最大值。</p>
+<p>能改变一个就能改变整个 <code>dp[0 ~ m]</code>。注意我们要从大到小改变 <code>dp[i]</code>。原因是：<code>dp[i - w]</code> 已经计算过了，说明这个背包有可能是装过该物品的了，此时就不能执行第二个决策，那么上面的转移方程就不对了（每个物品只能放一遍）</p>
+<p>做法就显而易见了，对于每个物品，都改变一次 <code>dp[0 ~ m]</code>。最后得到的 <code>dp[m]</code> 就是我想要的答案</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">    <span class="type">int</span> w, v;</span><br><span class="line">    cin &gt;&gt; w &gt;&gt; v;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = m; j &gt;= w; --j) &#123;</span><br><span class="line">        dp[j] = <span class="built_in">max</span>(dp[j], dp[j - w] + v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="继续深入讨论这个方法的本质"><a href="#继续深入讨论这个方法的本质" class="headerlink" title="继续深入讨论这个方法的本质"></a>继续深入讨论这个方法的本质</h3><blockquote>
+<p>这个我在其他地方写过，这里就直接复制过来了，我觉得说得比较对</p>
+</blockquote>
+<h4 id="Begin"><a href="#Begin" class="headerlink" title="Begin"></a>Begin</h4><blockquote>
+<p>本文写于<code>2024.5.23</code>，说不定当前的观点有误</p>
+</blockquote>
+<p>先看最经典的01背包：有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 件物品。第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 件物品的体积和价值分别为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">w_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">v_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>. 已知背包容量为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>，求背包中最多能装入多少价值的物品。</p>
+<p>都来看这篇文章了肯定是已经知道这个问题怎么在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>V</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nV)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.22222em;">nV</span><span class="mclose">)</span></span></span></span> 的时间复杂度内解决。下面直接来说结论，有关01背包的一些我认为正确的东西。</p>
+<ul>
+<li>需要考虑 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 个子决策点（物品），每个子决策点存在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 数量的决策方案</li>
+<li>每个决策点（物品）涉及到两个维度，且显示出此消彼长的特性（<strong>物品有两个维度指物品会产生两方面的影响，不等于物品有两个属性</strong>）</li>
+</ul>
+<blockquote>
+<p>感觉这两个点比较关键，就是首先考虑决策点是否存在这两个特点，存在就可以考虑01背包</p>
+</blockquote>
+<p>这个时候的做法就是遍历所有的决策点，考虑所有决策对于目前已有的 <code>dp</code> 数组的影响（状态转移）</p>
+<p>这个 <code>dp</code> 数组一般视情况而定，一般表示决策的两个维度</p>
+<h4 id="End"><a href="#End" class="headerlink" title="End"></a>End</h4><h3 id="例题时间"><a href="#例题时间" class="headerlink" title="例题时间"></a>例题时间</h3><p>我觉得已经是比较清晰了，下面来一道例题，也是上面引述的文章的<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1156">题目</a></p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><h5 id="analysis-1"><a href="#analysis-1" class="headerlink" title="analysis"></a>analysis</h5><p>一共存在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 个决策点，每次垃圾丢下来都是一个决策。<br>决策方案为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> 个：吃掉，堆起来<br>每个决策存在两个维度：生命值，高度</p>
+<p>我们将这两个维度分别对应 <code>dp</code> 数组的下标与值<br>（注意这里这里不用太过于在意区别这两个维度哪个是贡献，哪个是代价，因为这两种写法可以换着来写）</p>
+<h5 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h5><p>状态的划分：<code>dp[i]</code> 表示如果这头牛在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">t = i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 时死亡，那么它最终爬升到的高度最大值。</p>
+<p>每次决策的决策范围 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mclose">]</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span> 表示：想要吃到这块垃圾至少要活到第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 秒，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span> 表示：通过前面的垃圾，最多能活到多少秒。</p>
+<p>状态转移方程：<br>选择吃掉，<code>dp[j + 饱食度] &lt;- dp[j]</code>，也就是说:活的更久了，但是没有提升高度<br>选择堆起来，<code>dp[j] += 高度</code> 很显然就是直接在目前的生命值下直接堆高度。</p>
+<p>然后这题就算是做完了，因为得到 <code>dp[]</code> 之后就可以通过 <code>dp[]</code> 来找答案了，这里不多赘述。</p>
+<h5 id="code"><a href="#code" class="headerlink" title="code"></a>code</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> h, n;</span><br><span class="line">    cin &gt;&gt; h &gt;&gt; n;</span><br><span class="line">    <span class="comment">// 记录下所有垃圾的数据, 然后按照时间顺序排一下序</span></span><br><span class="line">    vector&lt;array&lt;<span class="type">int</span>, 3&gt;&gt; <span class="built_in">a</span>(n + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        cin &gt;&gt; a[i][<span class="number">0</span>] &gt;&gt; a[i][<span class="number">1</span>] &gt;&gt; a[i][<span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(a.<span class="built_in">begin</span>() + <span class="number">1</span>, a.<span class="built_in">end</span>());</span><br><span class="line">    <span class="comment">// 计算一下最终背包的容量, 也就是最多能活多久</span></span><br><span class="line">    <span class="type">int</span> m = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(m &gt;= a[i][<span class="number">0</span>]) m += a[i][<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// dp[i] 表示理论在 t = i 时死亡并获得的最高的高度</span></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(m + <span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="comment">// hp 表示通过之前的决策, 最多能活到什么时候(血条)</span></span><br><span class="line">    <span class="type">int</span> hp = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = hp; j &gt;= a[i][<span class="number">0</span>]; --j) &#123;</span><br><span class="line">            dp[j + a[i][<span class="number">1</span>]] = <span class="built_in">max</span>(dp[j + a[i][<span class="number">1</span>]], dp[j]);</span><br><span class="line">            dp[j] += a[i][<span class="number">2</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        hp += a[i][<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 输出答案</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(dp[i] &gt;= h) &#123;</span><br><span class="line">            cout &lt;&lt; i &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; m &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="例题切片"><a href="#例题切片" class="headerlink" title="例题切片"></a>例题切片</h3><blockquote>
+<p>由于直接写一篇完整题解太花篇幅了，这里只给出一些例题的hint</p>
+</blockquote>
+<h4 id="方案数dp"><a href="#方案数dp" class="headerlink" title="方案数dp"></a>方案数dp</h4><h5 id="普通方案数"><a href="#普通方案数" class="headerlink" title="普通方案数"></a>普通方案数</h5><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 个物品，大小为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 的背包，求 `dp[i]`，`dp[i]` 表示恰好装满大小为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 的背包的方案数。
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(m + <span class="number">1</span>)</span></span>;</span><br><span class="line">dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = m; j &gt;= w; --j) </span><br><span class="line">        dp[j] += dp[j - w];</span><br></pre></td></tr></table></figure>
+
+<h5 id="不考虑某件物品的方案数"><a href="#不考虑某件物品的方案数" class="headerlink" title="不考虑某件物品的方案数"></a>不考虑某件物品的方案数</h5><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 个物品，大小为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 的背包，求 `f[i][j]`，`f[i][j]` 表示**不装入**第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 件物品时，恰好装满大小为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 的背包的方案数
+
+<p>先正常跑一遍方案数的dp，求出 <code>dp[]</code>，<code>dp[i]</code> 表示恰好装满大小为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 的背包的方案数。</p>
+<p>然后依据 <code>dp[]</code> 求出 <code>f[][]</code>。具体做法如下</p>
+<ul>
+<li>考虑 <code>f[i][]</code> 这个数组，以下称其为 <code>g[]</code>，我们有以下的转移过程</li>
+<li>如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>&lt;</mo><mi>w</mi></mrow><annotation encoding="application/x-tex">j &lt; w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span>，则 <code>g[j] = dp[j]</code>，因为 <code>dp[j]</code> 的所有方案里面一定不存在含这个物品的方案（因为根本放不下）</li>
+<li>如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≥</mo><mi>w</mi></mrow><annotation encoding="application/x-tex">j \ge w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span>，则 <code>g[j] = dp[j] - g[j - w]</code>。要求含有这个物品的方案数，我首先会在背包里面放入这个物品，然后装满剩下 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>−</mo><mi>w</mi></mrow><annotation encoding="application/x-tex">j - w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span> 的背包，这一部分的方案数为 <code>g[j - w]</code>，根据乘法原则，这种情况的方案数量为 <code>1 * g[j - w]</code>。然后再用所有方案（数）减去含有该物品的方案（数），最后算出来的是不含该物品的方案（数），即 <code>dp[j] - g[j - w]</code></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;= m; ++j) &#123;</span><br><span class="line">        <span class="keyword">if</span>(j &lt; w) f[i][j] = dp[j];</span><br><span class="line">        <span class="keyword">else</span> f[i][j] = dp[j] - f[i][j - w];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="排除背包没装满的情况"><a href="#排除背包没装满的情况" class="headerlink" title="排除背包没装满的情况"></a>排除背包没装满的情况</h4><p>有些时候如果背包没装满的话，这个贡献不能用来计算 <code>ans</code>，此时可以这样做，<a target="_blank" rel="noopener" href="https://codeforces.com/contest/294/problem/B">CF294B</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> ll inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(m + <span class="number">1</span>, inf)</span></span>;</span><br><span class="line">dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>这样可以使得装不满的背包显示为 <code>inf</code>，从而在计算 <code>ans</code> 的时候被舍去</p>
+<h4 id="二维01背包"><a href="#二维01背包" class="headerlink" title="二维01背包"></a>二维01背包</h4><p>一个物品的属性维度如果不只是有两个怎么办？那就把二维视作一维就行了</p>
+<p>下面来看一道例题</p>
+<p>总所周知一个物品能不能装进背包不仅要看物品的体积，还要看他的重量</p>
+<p>现在有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 个物品，物品有质量，体积，价值；<br>求在一个体积限制为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>，质量限制为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span> 的背包中所能装入的物品最大价值</p>
+<h5 id="analysis-2"><a href="#analysis-2" class="headerlink" title="analysis"></a>analysis</h5><p>注意到体积和质量其实都是差不多的概念，我们可以把它当成一个<strong>代价维度</strong>，类型是 <code>pair&lt;int, int&gt;</code>，然后我们根据 <code>pii</code> 作为索引去查找一个背包的最大贡献，显然就有解法了。但是用 <code>pii</code> 作索引太傻逼了，所以我们用二维数组</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">dp</span>(V + <span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(M + <span class="number">1</span>));</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">    <span class="type">int</span> w, m, v;</span><br><span class="line">    cin &gt;&gt; w &gt;&gt; m &gt;&gt; v;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = V; j &gt;= w; --j) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> k = M; k &gt;= m; --k) &#123;</span><br><span class="line">            dp[j][k] = <span class="built_in">max</span>(dp[j][k], dp[j - w][k - m] + v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="warning"><a href="#warning" class="headerlink" title="warning"></a>warning</h5><p>如果发现时间复杂度不对，请检查是否能将两个代价维度化作一个。一般这种情况下，两个代价维度有一定联系，例如利润与成本，可以合并。</p>
+<h4 id="常见优化：互换键-值"><a href="#常见优化：互换键-值" class="headerlink" title="常见优化：互换键-值"></a>常见优化：互换键-值</h4><p>我们都知道背包dp的时间复杂度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>V</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nV)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.22222em;">nV</span><span class="mclose">)</span></span></span></span>。现在数据范围: 物品数量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3000</mn></mrow><annotation encoding="application/x-tex">3000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3000</span></span></span></span>，物品大小 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">10^6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span>，物品价值 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>（虽然这样可以用贪心，但是你不准用qaq）</p>
+<p>如果按照大小作为键，价值作为值，那么这个 <code>dp[]</code> 要开到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>⋅</mo><mn>1</mn><msup><mn>0</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">3\cdot 10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span> 的大小，而 <code>dp[x]</code> 最多不过 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3000</mn></mrow><annotation encoding="application/x-tex">3000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3000</span></span></span></span>。这个时候我们互换键与值，让 <code>dp[x]</code> 表示价值为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 需要的大小，这样就合理多了。</p>
+<p><strong>当键的值域过大且值的值域较小的时候，可以考虑互换键值的优化</strong></p>
+<h2 id="分组背包"><a href="#分组背包" class="headerlink" title="分组背包"></a>分组背包</h2><h3 id="问题导入-1"><a href="#问题导入-1" class="headerlink" title="问题导入"></a>问题导入</h3><p>现在在你面前有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 个物品，每个物品有两个属性：价值 <code>v</code>，与体积 <code>w</code>。你有一个大小为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 的背包，求你能获得的最大的价值。</p>
+<p>特殊限制: 这 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 个物品被分成 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 组，每组物品只能选取一个</p>
+<h4 id="analysis-3"><a href="#analysis-3" class="headerlink" title="analysis"></a>analysis</h4><p>有了01背包的基础，我们或许有点思路。这里直接给代码，自己尝试看懂。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= k; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = m; j &gt; <span class="number">0</span>; --j) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> [w, v] : group[i]) &#123;</span><br><span class="line">            <span class="keyword">if</span>(j &lt; w) <span class="keyword">continue</span>;</span><br><span class="line">            dp[j] = <span class="built_in">max</span>(dp[j], dp[j - w] + v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="分组背包的本质"><a href="#分组背包的本质" class="headerlink" title="分组背包的本质"></a>分组背包的本质</h3><p>观察问题发现，问题的主干与01背包完全一致，只是多了一个特殊限制条件。这个条件可以被总结为: 存在一部分的决策<strong>互斥</strong>，通俗的说就是只能选一个。</p>
+<p>决策点为: 第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 组第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 个物品的选择.</p>
+<p>这样符合01背包的条件:</p>
+<ul>
+<li>存在若干个决策点，每个决策点存在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 种选择</li>
+<li>每个决策涉及两个维度，二者呈此消彼长的关系</li>
+</ul>
+<p>同时符合分组背包的特殊限制</p>
+<ul>
+<li>存在一部分的决策<strong>互斥</strong></li>
+</ul>
+<h3 id="例题时间-1"><a href="#例题时间-1" class="headerlink" title="例题时间"></a>例题时间</h3><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/2000/problem/F">codeforces 2000F</a></p>
+<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><blockquote>
+<p>请逐个对应上文提到的分组背包使用前提思考”为什么选择这个解法”</p>
+</blockquote>
+<h5 id="analysis-4"><a href="#analysis-4" class="headerlink" title="analysis"></a>analysis</h5><p>这里的决策为<strong>第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold">i</mi></mrow><annotation encoding="application/x-tex">\mathbf{i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathbf">i</span></span></span></span> 个矩形得 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold">k</mi></mrow><annotation encoding="application/x-tex">\mathbf{k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathbf">k</span></span></span></span> 分</strong></p>
+<p>由于一个矩形最多得 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a + b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span> 分，故时间复杂度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>k</mi><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nk(a+b))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03148em;">nk</span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">b</span><span class="mclose">))</span></span></span></span></p>
+<h5 id="code-1"><a href="#code-1" class="headerlink" title="code"></a>code</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(m + <span class="number">1</span>, inf)</span></span>;</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="type">int</span> r, c;</span><br><span class="line">        cin &gt;&gt; r &gt;&gt; c;</span><br><span class="line">        <span class="keyword">if</span>(r &gt; c) <span class="built_in">swap</span>(r, c);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = m; j &gt; <span class="number">0</span>; --j) &#123;</span><br><span class="line">            <span class="type">int</span> cost = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> k = <span class="number">1</span>; k &lt;= r + c; ++k) &#123;</span><br><span class="line">                <span class="keyword">if</span>(k &gt; j) <span class="keyword">break</span>;</span><br><span class="line">                cost += r - <span class="built_in">max</span>(<span class="number">0</span>, (k - c + r) / <span class="number">2</span>);</span><br><span class="line">                dp[j] = <span class="built_in">min</span>(dp[j], dp[j - k] + cost);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; (dp[m] == inf ? <span class="number">-1</span> : dp[m]) &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="例题切片-1"><a href="#例题切片-1" class="headerlink" title="例题切片"></a>例题切片</h3><h4 id="树形背包"><a href="#树形背包" class="headerlink" title="树形背包"></a>树形背包</h4><blockquote>
+<p>前置知识: 树形dp</p>
+</blockquote>
+<p>给定一棵树，选择 <code>u</code> 必须先选择 <code>fa</code>，每个点有其贡献和代价，求大小为 <code>m</code> 的背包能获得的最大价值。</p>
+<p>设 <code>dp[i][j]</code> 表示以 <code>i</code> 为根的子树，大小为 <code>j</code> 的背包所能获得的最大的价值。</p>
+<p>显然以 <code>v</code> 子树有一系列的选择，具体说就是有若干的 <code>[v, dp[v][?]]</code> 组, 供 <code>u</code> 选择，而对 <code>dp[u]</code> 产生贡献的只能有一种（<code>i</code> 的最终取值唯一）。于是我们得出这个结论:</p>
+<p>在 <code>u</code> 处做的决策中，存在一部分决策<strong>互斥</strong>，于是可以使用分组背包</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> dfs = [&amp;](<span class="keyword">auto</span> dfs, <span class="type">int</span> u, <span class="type">int</span> fa) -&gt; <span class="type">void</span> &#123;</span><br><span class="line">    siz[u] += wei[u];</span><br><span class="line">    <span class="keyword">if</span>(wei[u] &lt;= m) &#123;</span><br><span class="line">        dp[u][wei[u]] = val[u];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = g.head[u]; ~i; i = g.nxt[i]) &#123;</span><br><span class="line">        <span class="type">int</span> v = g.to[u];</span><br><span class="line">        <span class="keyword">if</span>(v == fa) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">dfs</span>(dfs, v, u);</span><br><span class="line">        siz[u] += siz[v];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="built_in">min</span>(siz[u], m); j &gt;= wei[u]; ++j) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> k = <span class="number">1</span>; k &lt;= <span class="built_in">min</span>(siz[v], j - wei[u]); ++k) &#123;</span><br><span class="line">                dp[u][j] = <span class="built_in">max</span>(dp[u][j], dp[u][j - k] + dp[v][k]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="解释一下这个枚举顺序"><a href="#解释一下这个枚举顺序" class="headerlink" title="解释一下这个枚举顺序"></a>解释一下这个枚举顺序</h5><p><code>j</code> 和 <code>k</code> 的枚举顺序不能反。如果反过来，就对于 <code>k = 1</code> 枚举了所有大小的 <code>dp[u]</code>，再对 <code>k = 2</code> 枚举所有的 <code>dp[u]</code>，就会违背 01背包的原则。在这里指的是，同时选取一棵子树不同大小的背包多次（<code>dp[v][x]</code> 和 <code>dp[v][y]</code>）。</p>
+<h5 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度: "></a>时间复杂度: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><msup><mi>m</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nm^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></h5><h3 id="一个非常值得注意的点"><a href="#一个非常值得注意的点" class="headerlink" title="一个非常值得注意的点"></a>一个非常值得注意的点</h3><p>要有默认的方案选择，因为大部分情况下，默认选择<strong>贡献为0，代价为0</strong>的决策，所以关注不到这点。</p>
+<p>分组背包中决策是要枚举的，很有可能导致做出 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> 个决策。一定要想清楚决策是什么，默认决策是什么.</p>
+<h4 id="题目link"><a href="#题目link" class="headerlink" title="题目link"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1272">题目link</a></h4><p>大意是要切出一个大小为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span> 的子树，求最少要断几条边</p>
+<p><code>dp[u][j]</code> 以 <code>u</code> 为根的子树，贡献 <code>j</code> 个点，至少需要且多少条边.</p>
+<p>这里默认选择 <code>v</code> 贡献 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> 个点，而贡献 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> 个点需要 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 条边，所以每个大小的背包都先加 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>，再进行DP。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">dp</span>(n + <span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt; (n + <span class="number">1</span>, inf));</span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">siz</span><span class="params">(n + <span class="number">1</span>)</span></span>;</span><br><span class="line"><span class="keyword">auto</span> dfs = [&amp;](<span class="keyword">auto</span> dfs, <span class="type">int</span> u, <span class="type">int</span> fa) -&gt; <span class="type">int</span> &#123;</span><br><span class="line">    siz[u] = <span class="number">1</span>;</span><br><span class="line">    dp[u][<span class="number">0</span>] = <span class="number">1</span>, dp[u][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = g.head[u]; ~i; i = g.nxt[i]) &#123;</span><br><span class="line">        <span class="type">int</span> v = g.to[i];</span><br><span class="line">        <span class="keyword">if</span>(v == fa) <span class="keyword">continue</span>;</span><br><span class="line">        siz[u] += <span class="built_in">dfs</span>(dfs, v, u);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = siz[u]; j &gt; <span class="number">0</span>; --j) &#123;</span><br><span class="line">            dp[u][j]++;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> k = <span class="number">0</span>; k &lt;= <span class="built_in">min</span>(j - <span class="number">1</span>, siz[v]); ++k) &#123;</span><br><span class="line">                dp[u][j] = <span class="built_in">min</span>(dp[u][j], dp[u][j - k] + dp[v][k]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> siz[u];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    </article>
+    <!-- license -->
+        <div class="license-wrapper">
+            <p>Author:<a href="http://nanako7-ix.github.io">Nanako7_ix</a>
+            <p>Link:<a href="http://nanako7-ix.github.io/%E8%83%8C%E5%8C%85/">http://nanako7-ix.github.io/%E8%83%8C%E5%8C%85/</a>
+            <p>Publish date:<a href="http://nanako7-ix.github.io/%E8%83%8C%E5%8C%85/">November 4th 2024, 11:51:32 pm</a>
+            <p>Update date:
+                <a href="http://nanako7-ix.github.io/%E8%83%8C%E5%8C%85/">
+                    no_update
+                </a>
+            </p>
+            <p>License:本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+        </li>
+        <li class="previous">
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/%E6%9D%83%E5%80%BC%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" title="权值树状数组">
+                    <div class="prevTitle">权值树状数组</div>
+                </a>
+        </li>
+    </ul>
+    <!-- comment -->
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+            
+            
+            
+            <!-- utteranc评论 -->
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+            
+            
+            
+        </div>
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    <!-- Mathjax -->
+</main>
+
+                <!-- profile -->
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+        <div class="social">
+                            <a href="mailto:nanako7.ix@gmail.com" class="iconfont-archer email" title="email" ></a>
+                <a href="//github.com/nanako7-ix" class="iconfont-archer github" target="_blank" title="github"></a>
+                <a href="/ico" class="iconfont-archer stack-overflow" target="_blank" title="stack-overflow"></a>
+
+        </div>
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    <!-- 不蒜子  -->
+        <div class="busuanzi-container">
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+        </div>
+</footer>
+
+        </div>
+        <!-- toc -->
+            <div class="toc-wrapper toc-wrapper-loding" style=    top:50vh;
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#01%E8%83%8C%E5%8C%85"><span class="toc-number">1.</span> <span class="toc-text">01背包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%AF%BC%E5%85%A5"><span class="toc-number">1.1.</span> <span class="toc-text">问题导入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#analysis"><span class="toc-number">1.1.1.</span> <span class="toc-text">analysis</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%A7%E7%BB%AD%E6%B7%B1%E5%85%A5%E8%AE%A8%E8%AE%BA%E8%BF%99%E4%B8%AA%E6%96%B9%E6%B3%95%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="toc-number">1.2.</span> <span class="toc-text">继续深入讨论这个方法的本质</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Begin"><span class="toc-number">1.2.1.</span> <span class="toc-text">Begin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#End"><span class="toc-number">1.2.2.</span> <span class="toc-text">End</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98%E6%97%B6%E9%97%B4"><span class="toc-number">1.3.</span> <span class="toc-text">例题时间</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3"><span class="toc-number">1.3.1.</span> <span class="toc-text">题解</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#analysis-1"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">analysis</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#solution"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">solution</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#code"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">code</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98%E5%88%87%E7%89%87"><span class="toc-number">1.4.</span> <span class="toc-text">例题切片</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E6%95%B0dp"><span class="toc-number">1.4.1.</span> <span class="toc-text">方案数dp</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E6%96%B9%E6%A1%88%E6%95%B0"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">普通方案数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%8D%E8%80%83%E8%99%91%E6%9F%90%E4%BB%B6%E7%89%A9%E5%93%81%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">不考虑某件物品的方案数</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%92%E9%99%A4%E8%83%8C%E5%8C%85%E6%B2%A1%E8%A3%85%E6%BB%A1%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">1.4.2.</span> <span class="toc-text">排除背包没装满的情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B401%E8%83%8C%E5%8C%85"><span class="toc-number">1.4.3.</span> <span class="toc-text">二维01背包</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#analysis-2"><span class="toc-number">1.4.3.1.</span> <span class="toc-text">analysis</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#warning"><span class="toc-number">1.4.3.2.</span> <span class="toc-text">warning</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E4%BC%98%E5%8C%96%EF%BC%9A%E4%BA%92%E6%8D%A2%E9%94%AE-%E5%80%BC"><span class="toc-number">1.4.4.</span> <span class="toc-text">常见优化：互换键-值</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85"><span class="toc-number">2.</span> <span class="toc-text">分组背包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%AF%BC%E5%85%A5-1"><span class="toc-number">2.1.</span> <span class="toc-text">问题导入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#analysis-3"><span class="toc-number">2.1.1.</span> <span class="toc-text">analysis</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="toc-number">2.2.</span> <span class="toc-text">分组背包的本质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98%E6%97%B6%E9%97%B4-1"><span class="toc-number">2.3.</span> <span class="toc-text">例题时间</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3-1"><span class="toc-number">2.3.1.</span> <span class="toc-text">题解</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#analysis-4"><span class="toc-number">2.3.1.1.</span> <span class="toc-text">analysis</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#code-1"><span class="toc-number">2.3.1.2.</span> <span class="toc-text">code</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98%E5%88%87%E7%89%87-1"><span class="toc-number">2.4.</span> <span class="toc-text">例题切片</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%91%E5%BD%A2%E8%83%8C%E5%8C%85"><span class="toc-number">2.4.1.</span> <span class="toc-text">树形背包</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A%E4%B8%80%E4%B8%8B%E8%BF%99%E4%B8%AA%E6%9E%9A%E4%B8%BE%E9%A1%BA%E5%BA%8F"><span class="toc-number">2.4.1.1.</span> <span class="toc-text">解释一下这个枚举顺序</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">2.4.1.2.</span> <span class="toc-text">时间复杂度: O(nm2)O(nm^2)O(nm2)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E9%9D%9E%E5%B8%B8%E5%80%BC%E5%BE%97%E6%B3%A8%E6%84%8F%E7%9A%84%E7%82%B9"><span class="toc-number">2.5.</span> <span class="toc-text">一个非常值得注意的点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E7%9B%AElink"><span class="toc-number">2.5.1.</span> <span class="toc-text">题目link</span></a></li></ol></li></ol></li></ol>
+            </div>
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+        
+        
+        
+        
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 4
+        </div>
+        <!-- search  -->
+    </div>
+    <div class="post-archive">
+            <div class="archive-year"> 2024 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/04</span>
+            <a class="archive-post-title" href="/%E8%83%8C%E5%8C%85/">背包</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/02</span>
+            <a class="archive-post-title" href="/%E6%9D%83%E5%80%BC%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">权值树状数组</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/01</span>
+            <a class="archive-post-title" href="/%E5%B9%B6%E6%9F%A5%E9%9B%86/">并查集</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/31</span>
+            <a class="archive-post-title" href="/%E6%A8%A1%E4%B9%98%E6%84%8F%E4%B9%89%E4%B8%8B%E7%9A%84%E9%80%86%E5%85%83/">模乘意义下的逆元</a>
+        </li>
+            </ul>
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+            <span class="sidebar-tag-name" data-tags="数据结构">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据结构
+            </span>
+            <span class="sidebar-tag-name" data-tags="数论">
+                <span class="iconfont-archer">&#xe606;</span>
+                数论
+            </span>
+            <span class="sidebar-tag-name" data-tags="组合数学">
+                <span class="iconfont-archer">&#xe606;</span>
+                组合数学
+            </span>
+            <span class="sidebar-tag-name" data-tags="背包">
+                <span class="iconfont-archer">&#xe606;</span>
+                背包
+            </span>
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "http://nanako7-ix.github.io",
+        root: siteMetaRoot,
+        author: "Nanako7_ix"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+        <!-- main func -->
+        <script src="/scripts/main.js"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js" onload="window.Fancybox.bind('[data-fancybox]')" defer></script>
+        <!-- algolia -->
+        <!-- busuanzi -->
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        <!-- async load share.js -->
+            <script src="/scripts/share.js" async></script>
+        <!-- mermaid -->
+    </body>
+</html>

@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta property="og:type" content="website">
 <meta property="og:title" content="到这日才发现，曾呼吸过空气">
-<meta property="og:url" content="http://nanako7-ix.github.io/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/index.html">
+<meta property="og:url" content="http://nanako7-ix.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/index.html">
 <meta property="og:site_name" content="到这日才发现，曾呼吸过空气">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Nanako7_ix">
@@ -399,27 +399,30 @@
                 <main class="main index-page">
             
         <article class="index-post">
-            <a class="abstract-title" href="/%E6%A8%A1%E4%B9%98%E6%84%8F%E4%B9%89%E4%B8%8B%E7%9A%84%E9%80%86%E5%85%83/">
-                <span class="abstract-title-text">模乘意义下的逆元</span>
+            <a class="abstract-title" href="/%E8%83%8C%E5%8C%85/">
+                <span class="abstract-title-text">背包</span>
             </a>
             <div class="abstract-content">
-                定义xt≡1(modp)x t \equiv 1 \pmod pxt≡1(modp)
-x−1≡t(modp)x ^ {-1} \equiv t \pmod px−1≡t(modp)
+                01背包
+其实这个是我在刷了一部分题后重新写的，我长话短说，感觉不是很适合入门但是可以看看
 
-计算假设 ppp 为素数，那么由费马小定理可以知道 x−1≡xp−2(modp)x^{-1} \equiv x ^ {p - 2} \pmod px−1≡xp−2(modp)
-12using Nanako7_ix::fpow;inv = fpow(x, p - 2);
+问题导入现在在你面前有 nnn 个物品，每个物品有两个属性：价值 v，与体积 w。你有一个大小为 mmm 的背包，求你能获得的最大的价值
+analysis现在直接令 dp[i] 表示大小为 iii 的背包能获取的最大的价值，显然我们要求的是 dp[m].
+我们扫一遍所有的物品，对于每一个物品，我们只有两个决策，装进背包和不装。这两种决策都可能对已有的最优解们 dp[i] 产生影响，于是我们可以得到以下的两种可能。
 
+dp[i] &lt;- dp[i] 不装进背包, 此时的变化就是没有变化.
+dp...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/01">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/10/31</span>
+                <div class="abstract-date" title="Last updated: 2024/11/04">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/11/04</span>
                 </div>
                 <!-- tags -->
                     <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="数论">数论</a>
-        <a class="post-tag" href="javascript:void(0);" data-tags="组合数学">组合数学</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="背包">背包</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="动态规划">动态规划</a>
 </div>
 
             </div>
