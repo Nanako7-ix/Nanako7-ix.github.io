@@ -10,17 +10,22 @@
     <meta name="copyright" content="Nanako7_ix">
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     <meta name="description" content="">
-    <meta property="og:type" content="website">
-<meta property="og:title" content="到这日才发现，曾呼吸过空气">
-<meta property="og:url" content="http://nanako7-ix.github.io/index.html">
+    <meta name="description" content="介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FHQ-Treap">
+<meta property="og:url" content="http://nanako7-ix.github.io/FHQ-Treap/index.html">
 <meta property="og:site_name" content="到这日才发现，曾呼吸过空气">
+<meta property="og:description" content="介绍">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-05T09:45:34.000Z">
 <meta property="article:author" content="Nanako7_ix">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="平衡树">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon.ico">
-    <title>Nanako7_ix&#39;s Blog</title>
+    <title>FHQ-Treap · Nanako7_ix&#39;s Blog</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -208,9 +213,9 @@
             document.write('<script src="/lib/jquery.min.js" />')
         }
     </script>
-        <body class="home-body">
+        <body class="post-body">
         <!-- header -->
-        <header class="header header-mobile index-header">
+        <header class="header header-mobile">
     <!-- top read progress line -->
     <div class="header-element">
         <div class="read-progress"></div>
@@ -238,13 +243,13 @@
             <a href="/">Nanako7_ix&#39;s Blog</a>
         </div>
         <div class="post-title header-element">
-            <a href="#" class="post-name"></a>
+            <a href="#" class="post-name">FHQ-Treap</a>
         </div>
     </div>
 </header>
 
         <!-- fixed footer -->
-        <footer class="footer-fixed index-footer-fixed">
+        <footer class="footer-fixed">
     <!-- donate button -->
 
     <!-- back to top button -->
@@ -258,23 +263,55 @@
             <div class="site-intro" style="    height:50vh;
 ">
     <!-- 主页  -->
-    <!-- 文章页  -->
+    <!-- 404页  -->
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/index-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
-                Nanako7_ix's Blog
-            <!-- 文章页  -->
+                FHQ-Treap
+            <!-- 404 -->
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
-                    到这日才发现，曾呼吸过空气
-            <!-- 文章页  -->
+            <!-- 404 -->
         </p>
         <!-- 文章页 meta -->
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                    <div class="post-intro-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="数据结构">数据结构</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="平衡树">平衡树</a>
+</div>
+
+                <!-- 文章字数统计 -->
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2024/11/05</span>
+                    <!-- busuanzi -->
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
     </div>
 </div>
 
@@ -403,163 +440,55 @@
 
             <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" alt="loading">
             <div class="container container-unloaded">
-                <main class="main index-page">
+                <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2>
+    </article>
+    <!-- license -->
+        <div class="license-wrapper">
+            <p>Author:<a href="http://nanako7-ix.github.io">Nanako7_ix</a>
+            <p>Link:<a href="http://nanako7-ix.github.io/FHQ-Treap/">http://nanako7-ix.github.io/FHQ-Treap/</a>
+            <p>Publish date:<a href="http://nanako7-ix.github.io/FHQ-Treap/">November 5th 2024, 5:45:34 pm</a>
+            <p>Update date:
+                <a href="http://nanako7-ix.github.io/FHQ-Treap/">
+                    no_update
+                </a>
+            </p>
+            <p>License:本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+        </li>
+        <li class="previous">
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/%E8%83%8C%E5%8C%85/" title="背包">
+                    <div class="prevTitle">背包</div>
+                </a>
+        </li>
+    </ul>
+    <!-- comment -->
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
             
-        <article class="index-post">
-            <a class="abstract-title" href="/FHQ-Treap/">
-                <span class="abstract-title-text">FHQ-Treap</span>
-            </a>
-            <div class="abstract-content">
-                介绍
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/05">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/11/05</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="数据结构">数据结构</a>
-        <a class="post-tag" href="javascript:void(0);" data-tags="平衡树">平衡树</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
             
-        <article class="index-post">
-            <a class="abstract-title" href="/%E8%83%8C%E5%8C%85/">
-                <span class="abstract-title-text">背包</span>
-            </a>
-            <div class="abstract-content">
-                01背包
-其实这个是我在刷了一部分题后重新写的，我长话短说，感觉不是很适合入门但是可以看看
-
-问题导入现在在你面前有 nnn 个物品，每个物品有两个属性：价值 v，与体积 w。你有一个大小为 mmm 的背包，求你能获得的最大的价值
-analysis现在直接令 dp[i] 表示大小为 iii 的背包能获取的最大的价值，显然我们要求的是 dp[m].
-我们扫一遍所有的物品，对于每一个物品，我们只有两个决策，装进背包和不装。这两种决策都可能对已有的最优解们 dp[i] 产生影响，于是我们可以得到以下的两种可能。
-
-dp[i] &lt;- dp[i] 不装进背包, 此时的变化就是没有变化.
-dp...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/04">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/11/04</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="背包">背包</a>
-        <a class="post-tag" href="javascript:void(0);" data-tags="动态规划">动态规划</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
             
-        <article class="index-post">
-            <a class="abstract-title" href="/%E6%9D%83%E5%80%BC%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">
-                <span class="abstract-title-text">权值树状数组</span>
-            </a>
-            <div class="abstract-content">
-                功能维护一个集合，操作包括：插入一个数 xxx，删除一个数 xxx，求 xxx 的排名，求集合第 kkk 大，求 xxx 的前驱，求 xxx 的后继
-要求离线，（需要离散化）或者是（值域很小且没有多测）。
-核心：树状数组上二分树状数组上二分是用来求全局第 kkk 大的，功能是在 O(log⁡n)O(\log n)O(logn) 的时间复杂度内求出前缀和大于等于 kkk 的第一个位置。这个操作实际上实在帮我们求出 kth
-先放代码
-1234567int kth(ll k) &#123;    int x = 0;    for(int i = 1 &lt;&lt; __lg(n); i; ...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/02">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/11/02</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="数据结构">数据结构</a>
-</div>
+            <!-- utteranc评论 -->
 
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
             
-        <article class="index-post">
-            <a class="abstract-title" href="/%E5%B9%B6%E6%9F%A5%E9%9B%86/">
-                <span class="abstract-title-text">并查集</span>
-            </a>
-            <div class="abstract-content">
-                普通并查集并查集研究一个集合中的元素是否有关系的数据结构，这个关系需要具有传递性。比如无向图中 u 和 v 是联通的，v 和 t 是联通的，那么 u 和 t 之间也是联通的。事实上并查集就是基于上面这个例子的一种数据结构。并查集顾名思义有两种操作：为两个元素添加关系，查询两个点之间是否具有关系。
-并查集由若干个连通块组成，其中每一个连通块都是一棵树。换言之，并查集是一座森林。数组 f[] 记录每个点的前驱。最开始，每个点都是独立的，此时 f[i] = i。
-查询两个点是否有关系判断两个点是否在同一个连通块（树）中，只需要分别找到每个点所在树的根，然后判断是否相同即可。找根的函数这么写：
-...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/01">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/11/01</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="数据结构">数据结构</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
             
-        <article class="index-post">
-            <a class="abstract-title" href="/%E6%A8%A1%E4%B9%98%E6%84%8F%E4%B9%89%E4%B8%8B%E7%9A%84%E9%80%86%E5%85%83/">
-                <span class="abstract-title-text">模乘意义下的逆元</span>
-            </a>
-            <div class="abstract-content">
-                定义xt≡1(modp)x t \equiv 1 \pmod pxt≡1(modp)
-x−1≡t(modp)x ^ {-1} \equiv t \pmod px−1≡t(modp)
-
-计算假设 ppp 为素数，那么由费马小定理可以知道 x−1≡xp−2(modp)x^{-1} \equiv x ^ {p - 2} \pmod px−1≡xp−2(modp)
-12using Nanako7_ix::fpow;inv = fpow(x, p - 2);
-
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/01">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/10/31</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="数论">数论</a>
-        <a class="post-tag" href="javascript:void(0);" data-tags="组合数学">组合数学</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    <!-- paginator  -->
+            
+        </div>
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    <!-- Mathjax -->
 </main>
 
                 <!-- profile -->
-                    <div class="profile">
-    <img class="profile-avatar" alt="avatar" src="/avatar/tmp.jpg" >
-    <div class="profile-name">Nanako7_ix</div>
-        <div class="profile-signature">
-            witness me
-        </div>
-        <div class="profile-social">
-                            <a href="mailto:nanako7.ix@gmail.com" class="iconfont-archer email" title="email" ></a>
-                <a href="//github.com/nanako7-ix" class="iconfont-archer github" target="_blank" title="github"></a>
-                <a href="/ico" class="iconfont-archer stack-overflow" target="_blank" title="stack-overflow"></a>
-
-        </div>
-        <div class="profile-link-item">
-            <a href="/about" class="about-me">
-                ABOUT ME
-            </a>
-        </div>
-</div>
-
             </div>
             <footer class="footer footer-unloaded">
     <!-- social  -->
@@ -582,6 +511,13 @@ x−1≡t(modp)x ^ {-1} \equiv t \pmod px−1≡t(modp)
 
         </div>
         <!-- toc -->
+            <div class="toc-wrapper toc-wrapper-loding" style=    top:50vh;
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li></ol>
+            </div>
         <!-- sidebar -->
         <div class="sidebar sidebar-hide">
     <ul class="sidebar-tabs sidebar-tabs-active-0">
@@ -698,6 +634,7 @@ x−1≡t(modp)x ^ {-1} \equiv t \pmod px−1≡t(modp)
         <!-- busuanzi -->
             <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
         <!-- async load share.js -->
+            <script src="/scripts/share.js" async></script>
         <!-- mermaid -->
     </body>
 </html>
