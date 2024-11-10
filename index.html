@@ -410,8 +410,8 @@
                 <span class="abstract-title-text">Codeforces Round 985 题解</span>
             </a>
             <div class="abstract-content">
-                Codeforces Round 985 题解A - Set题意给一个正整数 kkk 和一个集合 S=[l,r]S = [l, r]S=[l,r]。你可以执行以下操作：从集合 SSS 中选择一个数字 xxx ，SSS 中至少有 kkk 个 xxx 的倍数（包括 xxx 本身）然后，从 SSS 中删除 xxx。求可以进行的最大运算次数。
-分析对于一个数 xxx，xxx 可以删除，当且仅当 kx≤rkx \leq rkx≤r，即 x≤⌊rk⌋x \leq \lfloor\frac{r}{k}\rfloorx≤⌊kr​⌋。所以可以计算出答案为 max⁡(⌊rk⌋−l+1,0)\max(\lfl...
+                A - Set题意给一个正整数 kkk 和一个集合 S=[l,r]S = [l, r]S=[l,r]。你可以执行以下操作：从集合 SSS 中选择一个数字 xxx ，SSS 中至少有 kkk 个 xxx 的倍数（包括 xxx 本身）然后，从 SSS 中删除 xxx。求可以进行的最大运算次数。
+分析对于一个数 xxx，xxx 可以删除，当且仅当 kx≤rkx \leq rkx≤r，即 x≤⌊rk⌋x \leq \lfloor\frac{r}{k}\rfloorx≤⌊kr​⌋。所以可以计算出答案为 max⁡(⌊rk⌋−l+1,0)\max(\lfloor\frac{r}{k}\rfloor -...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
@@ -434,7 +434,9 @@
                 <span class="abstract-title-text">FHQ-Treap</span>
             </a>
             <div class="abstract-content">
-                介绍
+                介绍FHQ-Treap 是一种笛卡尔树，笛卡尔树的节点存在键和值，其中对值来说，笛卡尔树是二叉搜索树。对键来说，笛卡尔树是堆。它的第一种作用就是维护一个集合，然后可以用来插入，删除，求kth，求排名，求前驱，求后继。对于一个满足结合律的操作 op，还能求集合的 op 值。
+核心操作FHQ-Treap有两个核心操作：分裂和合并
+
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
