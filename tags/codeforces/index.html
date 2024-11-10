@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta property="og:type" content="website">
 <meta property="og:title" content="到这日才发现，曾呼吸过空气">
-<meta property="og:url" content="http://nanako7-ix.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:url" content="http://nanako7-ix.github.io/tags/codeforces/index.html">
 <meta property="og:site_name" content="到这日才发现，曾呼吸过空气">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Nanako7_ix">
@@ -399,73 +399,23 @@
                 <main class="main index-page">
             
         <article class="index-post">
-            <a class="abstract-title" href="/FHQ-Treap/">
-                <span class="abstract-title-text">FHQ-Treap</span>
+            <a class="abstract-title" href="/Codeforces-Round-985-%E9%A2%98%E8%A7%A3/">
+                <span class="abstract-title-text">Codeforces Round 985 题解</span>
             </a>
             <div class="abstract-content">
-                介绍
+                Codeforces Round 985 题解A - Set题意给一个正整数 kkk 和一个集合 S=[l,r]S = [l, r]S=[l,r]。你可以执行以下操作：从集合 SSS 中选择一个数字 xxx ，SSS 中至少有 kkk 个 xxx 的倍数（包括 xxx 本身）然后，从 SSS 中删除 xxx。求可以进行的最大运算次数。
+分析对于一个数 xxx，xxx 可以删除，当且仅当 kx≤rkx \leq rkx≤r，即 x≤⌊rk⌋x \leq \lfloor\frac{r}{k}\rfloorx≤⌊kr​⌋。所以可以计算出答案为 max⁡(⌊rk⌋−l+1,0)\max(\lfl...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/05">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/11/05</span>
+                <div class="abstract-date" title="Last updated: 2024/11/10">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/11/10</span>
                 </div>
                 <!-- tags -->
                     <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="数据结构">数据结构</a>
-        <a class="post-tag" href="javascript:void(0);" data-tags="平衡树">平衡树</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/%E6%9D%83%E5%80%BC%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">
-                <span class="abstract-title-text">权值树状数组</span>
-            </a>
-            <div class="abstract-content">
-                功能维护一个集合，操作包括：插入一个数 xxx，删除一个数 xxx，求 xxx 的排名，求集合第 kkk 大，求 xxx 的前驱，求 xxx 的后继
-要求离线，（需要离散化）或者是（值域很小且没有多测）。
-核心：树状数组上二分树状数组上二分是用来求全局第 kkk 大的，功能是在 O(log⁡n)O(\log n)O(logn) 的时间复杂度内求出前缀和大于等于 kkk 的第一个位置。这个操作实际上实在帮我们求出 kth
-先放代码
-1234567int kth(ll k) &#123;    int x = 0;    for(int i = 1 &lt;&lt; __lg(n); i; ...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/02">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/11/02</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="数据结构">数据结构</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/%E5%B9%B6%E6%9F%A5%E9%9B%86/">
-                <span class="abstract-title-text">并查集</span>
-            </a>
-            <div class="abstract-content">
-                普通并查集并查集研究一个集合中的元素是否有关系的数据结构，这个关系需要具有传递性。比如无向图中 u 和 v 是联通的，v 和 t 是联通的，那么 u 和 t 之间也是联通的。事实上并查集就是基于上面这个例子的一种数据结构。并查集顾名思义有两种操作：为两个元素添加关系，查询两个点之间是否具有关系。
-并查集由若干个连通块组成，其中每一个连通块都是一棵树。换言之，并查集是一座森林。数组 f[] 记录每个点的前驱。最开始，每个点都是独立的，此时 f[i] = i。
-查询两个点是否有关系判断两个点是否在同一个连通块（树）中，只需要分别找到每个点所在树的根，然后判断是否相同即可。找根的函数这么写：
-...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/01">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/11/01</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="数据结构">数据结构</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="题解">题解</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="codeforces">codeforces</a>
 </div>
 
             </div>
