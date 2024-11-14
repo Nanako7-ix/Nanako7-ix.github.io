@@ -451,9 +451,9 @@
                 <span class="abstract-title-text">FHQ-Treap</span>
             </a>
             <div class="abstract-content">
-                介绍FHQ-Treap 是一种笛卡尔树，笛卡尔树的节点存在键和值，其中对值来说，笛卡尔树是二叉搜索树。对键来说，笛卡尔树是堆。它的第一种作用就是维护一个集合，然后可以用来插入，删除，求kth，求排名，求前驱，求后继。对于一个满足结合律的操作 op，还能求集合的 op 值。
-核心操作FHQ-Treap有两个核心操作：分裂和合并。分裂分成按值分裂（只在维护集合里面用到）和按排名分裂。灵活操作和和合并可以实现很多操作。
-成员信息12345struct Treap &#123;    mt19937 sj;    vector&lt;ll&gt; val, key;    vector&lt;i...
+                介绍 - 维护集合FHQ-Treap 是一种笛卡尔树，笛卡尔树的节点存在键和值，其中对值来说，笛卡尔树是二叉搜索树。对键来说，笛卡尔树是堆。它的第一种作用就是维护一个集合，然后可以用来插入，删除，求kth，求排名，求前驱，求后继。对于一个满足结合律的操作 op，还能求集合的 op 值。
+成员信息123456struct Treap &#123;    mt19937 sj;    vector&lt;ll&gt; val, key, gcd;    vector&lt;int&gt; siz, ls, rs;    int rt = 0, cnt = 1;&#125;;
+如果需要维护其他...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
@@ -508,10 +508,10 @@ dp...
             </a>
             <div class="abstract-content">
                 功能维护一个集合，操作包括：插入一个数 xxx，删除一个数 xxx，求 xxx 的排名，求集合第 kkk 大，求 xxx 的前驱，求 xxx 的后继
-要求离线，（需要离散化）或者是（值域很小且没有多测）。
+要求值域小或者可离散化。
 核心：树状数组上二分树状数组上二分是用来求全局第 kkk 大的，功能是在 O(log⁡n)O(\log n)O(logn) 的时间复杂度内求出前缀和大于等于 kkk 的第一个位置。这个操作实际上实在帮我们求出 kth
 先放代码
-1234567int kth(ll k) &#123;    int x = 0;    for(int i = 1 &lt;&lt; __lg(n); i; ...
+1234567int kth(ll k) &#123;    int x = 0;    for(int i = 1 &lt;&lt; __lg(n); i; i &gt;&gt;= 1) ...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
@@ -522,6 +522,7 @@ dp...
                 <!-- tags -->
                     <div class="abstract-tags" >
         <a class="post-tag" href="javascript:void(0);" data-tags="数据结构">数据结构</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="树状数组">树状数组</a>
 </div>
 
             </div>
@@ -672,6 +673,10 @@ dp...
             <span class="sidebar-tag-name" data-tags="codeforces">
                 <span class="iconfont-archer">&#xe606;</span>
                 codeforces
+            </span>
+            <span class="sidebar-tag-name" data-tags="树状数组">
+                <span class="iconfont-archer">&#xe606;</span>
+                树状数组
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

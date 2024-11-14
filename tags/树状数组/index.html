@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta property="og:type" content="website">
 <meta property="og:title" content="到这日才发现，曾呼吸过空气">
-<meta property="og:url" content="http://nanako7-ix.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/index.html">
+<meta property="og:url" content="http://nanako7-ix.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/index.html">
 <meta property="og:site_name" content="到这日才发现，曾呼吸过空气">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Nanako7_ix">
@@ -399,30 +399,26 @@
                 <main class="main index-page">
             
         <article class="index-post">
-            <a class="abstract-title" href="/%E8%83%8C%E5%8C%85/">
-                <span class="abstract-title-text">背包</span>
+            <a class="abstract-title" href="/%E6%9D%83%E5%80%BC%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">
+                <span class="abstract-title-text">权值树状数组</span>
             </a>
             <div class="abstract-content">
-                01背包
-其实这个是我在刷了一部分题后重新写的，我长话短说，感觉不是很适合入门但是可以看看
-
-问题导入现在在你面前有 nnn 个物品，每个物品有两个属性：价值 v，与体积 w。你有一个大小为 mmm 的背包，求你能获得的最大的价值
-analysis现在直接令 dp[i] 表示大小为 iii 的背包能获取的最大的价值，显然我们要求的是 dp[m].
-我们扫一遍所有的物品，对于每一个物品，我们只有两个决策，装进背包和不装。这两种决策都可能对已有的最优解们 dp[i] 产生影响，于是我们可以得到以下的两种可能。
-
-dp[i] &lt;- dp[i] 不装进背包, 此时的变化就是没有变化.
-dp...
+                功能维护一个集合，操作包括：插入一个数 xxx，删除一个数 xxx，求 xxx 的排名，求集合第 kkk 大，求 xxx 的前驱，求 xxx 的后继
+要求值域小或者可离散化。
+核心：树状数组上二分树状数组上二分是用来求全局第 kkk 大的，功能是在 O(log⁡n)O(\log n)O(logn) 的时间复杂度内求出前缀和大于等于 kkk 的第一个位置。这个操作实际上实在帮我们求出 kth
+先放代码
+1234567int kth(ll k) &#123;    int x = 0;    for(int i = 1 &lt;&lt; __lg(n); i; i &gt;&gt;= 1) ...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/04">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/11/04</span>
+                <div class="abstract-date" title="Last updated: 2024/11/02">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/11/02</span>
                 </div>
                 <!-- tags -->
                     <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="背包">背包</a>
-        <a class="post-tag" href="javascript:void(0);" data-tags="动态规划">动态规划</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="数据结构">数据结构</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="树状数组">树状数组</a>
 </div>
 
             </div>
