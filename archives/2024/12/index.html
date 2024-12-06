@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta property="og:type" content="website">
 <meta property="og:title" content="到这日才发现，曾呼吸过空气">
-<meta property="og:url" content="http://nanako7-ix.github.io/tags/%E8%83%8C%E5%8C%85/index.html">
+<meta property="og:url" content="http://nanako7-ix.github.io/archives/2024/12/index.html">
 <meta property="og:site_name" content="到这日才发现，曾呼吸过空气">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Nanako7_ix">
@@ -399,30 +399,24 @@
                 <main class="main index-page">
             
         <article class="index-post">
-            <a class="abstract-title" href="/%E8%83%8C%E5%8C%85/">
-                <span class="abstract-title-text">背包</span>
+            <a class="abstract-title" href="/Codeforces-Round-991-%E9%A2%98%E8%A7%A3/">
+                <span class="abstract-title-text">Codeforces Round 991 题解</span>
             </a>
             <div class="abstract-content">
-                01背包
-其实这个是我在刷了一部分题后重新写的，我长话短说，感觉不是很适合入门但是可以看看
-
-问题导入现在在你面前有 nnn 个物品，每个物品有两个属性：价值 v，与体积 w。你有一个大小为 mmm 的背包，求你能获得的最大的价值
-analysis现在直接令 dp[i] 表示大小为 iii 的背包能获取的最大的价值，显然我们要求的是 dp[m].
-我们扫一遍所有的物品，对于每一个物品，我们只有两个决策，装进背包和不装。这两种决策都可能对已有的最优解们 dp[i] 产生影响，于是我们可以得到以下的两种可能。
-
-dp[i] &lt;- dp[i] 不装进背包, 此时的变化就是没有变化.
-dp...
+                A - Line Breaks题意给你 nnn 个字符串和一个能写的下 mmm 个字符的一张纸。你需要在这张纸上按顺序写这 nnn 个字符串。问你最多能写多少个字符串。
+分析记录一下前 kkk 个字符串有多少个字符，找到第一个大于 mmm 的位置，然后输出减一即可
+代码12345678910void solve() &#123;    int n, m;    cin &gt;&gt; n &gt;&gt; m;    vector&lt;int&gt; a(n + 1);    fu(i, 1, n) &#123;        string s; cin &gt;&gt; s;   ...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/04">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/11/04</span>
+                <div class="abstract-date" title="Last updated: 2024/12/06">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/12/06</span>
                 </div>
                 <!-- tags -->
                     <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="背包">背包</a>
-        <a class="post-tag" href="javascript:void(0);" data-tags="动态规划">动态规划</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="题解">题解</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="codeforces">codeforces</a>
 </div>
 
             </div>
