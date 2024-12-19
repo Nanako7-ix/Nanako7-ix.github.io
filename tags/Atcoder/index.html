@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta property="og:type" content="website">
 <meta property="og:title" content="到这日才发现，曾呼吸过空气">
-<meta property="og:url" content="http://nanako7-ix.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:url" content="http://nanako7-ix.github.io/tags/Atcoder/index.html">
 <meta property="og:site_name" content="到这日才发现，曾呼吸过空气">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Nanako7_ix">
@@ -399,77 +399,25 @@
                 <main class="main index-page">
             
         <article class="index-post">
-            <a class="abstract-title" href="/FHQ-Treap/">
-                <span class="abstract-title-text">FHQ-Treap</span>
+            <a class="abstract-title" href="/Atcoder-384%E9%A2%98%E8%A7%A3/">
+                <span class="abstract-title-text">Atcoder-384题解</span>
             </a>
             <div class="abstract-content">
-                介绍 - 维护集合FHQ-Treap 是一种笛卡尔树，笛卡尔树的节点存在键和值，其中对值来说，笛卡尔树是二叉搜索树。对键来说，笛卡尔树是堆。它的第一种作用就是维护一个集合，然后可以用来插入，删除，求kth，求排名，求前驱，求后继。对于一个满足结合律的操作 op，还能求集合的 op 值。
-成员信息123456struct Treap &#123;    mt19937 sj;    vector&lt;ll&gt; val, key, gcd;    vector&lt;int&gt; siz, ls, rs;    int rt = 0, cnt = 1;&#125;;
-
-如果需要维护其...
+                A - aaaadaaTag模拟
+题意给你一个长度为 NNN 的字符串 SSS ，由小写英文字母以及小写英文字母 c1c_1c1​ 和 c2c_2c2​ 组成。
+求用 c2c_2c2​ 替换 SSS 中每个不是 c1c_1c1​ 的字符后得到的字符串。
+代码1234567891011void solve() &#123;    int n; char c1, c2;    cin &gt;&gt; n &gt;&gt; c1 &gt;&gt; c2;    string s;    cin &gt;&gt; s;    for(auto&amp; c : s) &#123;       ...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/05">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/11/05</span>
+                <div class="abstract-date" title="Last updated: 2024/12/20">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/12/20</span>
                 </div>
                 <!-- tags -->
                     <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="数据结构">数据结构</a>
-        <a class="post-tag" href="javascript:void(0);" data-tags="平衡树">平衡树</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/%E6%9D%83%E5%80%BC%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">
-                <span class="abstract-title-text">权值树状数组</span>
-            </a>
-            <div class="abstract-content">
-                功能维护一个集合，操作包括：插入一个数 xxx，删除一个数 xxx，求 xxx 的排名，求集合第 kkk 大，求 xxx 的前驱，求 xxx 的后继
-要求值域小或者可离散化。
-核心：树状数组上二分树状数组上二分是用来求全局第 kkk 大的，功能是在 O(log⁡n)O(\log n)O(logn) 的时间复杂度内求出前缀和大于等于 kkk 的第一个位置。这个操作实际上实在帮我们求出 kth
-先放代码
-1234567int kth(ll k) &#123;    int x = 0;    for(int i = 1 &lt;&lt; __lg(n); i; i &gt;&gt;= 1) ...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/02">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/11/02</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="数据结构">数据结构</a>
-        <a class="post-tag" href="javascript:void(0);" data-tags="树状数组">树状数组</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/%E5%B9%B6%E6%9F%A5%E9%9B%86/">
-                <span class="abstract-title-text">并查集</span>
-            </a>
-            <div class="abstract-content">
-                普通并查集并查集研究一个集合中的元素是否有关系的数据结构，这个关系需要具有传递性。比如无向图中 u 和 v 是联通的，v 和 t 是联通的，那么 u 和 t 之间也是联通的。事实上并查集就是基于上面这个例子的一种数据结构。并查集顾名思义有两种操作：为两个元素添加关系，查询两个点之间是否具有关系。
-并查集由若干个连通块组成，其中每一个连通块都是一棵树。换言之，并查集是一座森林。数组 f[] 记录每个点的前驱。最开始，每个点都是独立的，此时 f[i] = i。
-查询两个点是否有关系判断两个点是否在同一个连通块（树）中，只需要分别找到每个点所在树的根，然后判断是否相同即可。找根的函数这么写：
-...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/01">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/11/01</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="数据结构">数据结构</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="题解">题解</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Atcoder">Atcoder</a>
 </div>
 
             </div>
