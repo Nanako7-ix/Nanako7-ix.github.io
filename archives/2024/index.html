@@ -399,6 +399,32 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/Codeforces-Round-995-%E9%A2%98%E8%A7%A3/">
+                <span class="abstract-title-text">Codeforces Round 995 题解</span>
+            </a>
+            <div class="abstract-content">
+                A - Preparing for the OlympiadTag贪心
+题意A, B 两人各有一个训练计划，一共有 nnn 天。A 在第 iii 天做 aia_iai​ 题，B 在第 iii 天 bib_ibi​。A 可以任意选择若干天来做题，B 只能在 A 训练的下一天（如果存在）训练。问 A 最多比 B 多做多少道题
+分析对于任意的 1≤i&lt;n1 \leq i \lt n1≤i&lt;n，如果有 ai&gt;bi+1a_i &gt; b_{i + 1}ai​&gt;bi+1​，那么 A 在第 iii 天训练。A 第 nnn 天无条件训练。
+代码12345678910111213...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2024/12/23">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/12/23</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="题解">题解</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="codeforces">codeforces</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/Atcoder-384%E9%A2%98%E8%A7%A3/">
                 <span class="abstract-title-text">Atcoder-384题解</span>
             </a>
@@ -635,33 +661,6 @@ dp...
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/%E6%9D%83%E5%80%BC%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">
-                <span class="abstract-title-text">权值树状数组</span>
-            </a>
-            <div class="abstract-content">
-                功能维护一个集合，操作包括：插入一个数 xxx，删除一个数 xxx，求 xxx 的排名，求集合第 kkk 大，求 xxx 的前驱，求 xxx 的后继
-要求值域小或者可离散化。
-核心：树状数组上二分树状数组上二分是用来求全局第 kkk 大的，功能是在 O(log⁡n)O(\log n)O(logn) 的时间复杂度内求出前缀和大于等于 kkk 的第一个位置。这个操作实际上实在帮我们求出 kth
-先放代码
-1234567int kth(ll k) &#123;    int x = 0;    for(int i = 1 &lt;&lt; __lg(n); i; i &gt;&gt;= 1) ...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/02">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/11/02</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="数据结构">数据结构</a>
-        <a class="post-tag" href="javascript:void(0);" data-tags="树状数组">树状数组</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <span class="page-number current">1</span><a class="page-number" href="/archives/2024/page/2/">2</a><a class="extend next" rel="next" href="/archives/2024/page/2/">NEXT &gt;</a>
@@ -713,15 +712,20 @@ dp...
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 12
+        Total : 13
         </div>
         <!-- search  -->
     </div>
     <div class="post-archive">
             <div class="archive-year"> 2024 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/23</span>
+            <a class="archive-post-title" href="/Codeforces-Round-995-%E9%A2%98%E8%A7%A3/">Codeforces Round 995 题解</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">12/20</span>
             <a class="archive-post-title" href="/Atcoder-384%E9%A2%98%E8%A7%A3/">Atcoder-384题解</a>
