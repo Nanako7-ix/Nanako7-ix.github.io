@@ -399,6 +399,33 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/Codeforces-Round-998-%E9%A2%98%E8%A7%A3/">
+                <span class="abstract-title-text">Codeforces Round 998 题解</span>
+            </a>
+            <div class="abstract-content">
+                A - FibonaccinessTag模拟、枚举
+题意有一个由 555 个整数组成的数组。你只知道 a1,a2,a4,a5a_1,a_2,a_4,a_5a1​,a2​,a4​,a5​。将 a3a_3a3​ 设置为任何整数。使得满足 ai=ai−1+ai−2,i≥3a_{i} = a_{i - 1} + a_{i - 2}, i \geq 3ai​=ai−1​+ai−2​,i≥3 的整数 iii 的个数最大。求最大的个数
+分析iii 的取值总共有三种 3,4,53, 4, 53,4,5，枚举这三种情况，求 a3a_3a3​ 应该是什么数，找到出现次数最多的那个数，次数为答案。
+
+代码12...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/01/23">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/01/23</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="题解">题解</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="codeforces">codeforces</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/Codeforces-Round-995-%E9%A2%98%E8%A7%A3/">
                 <span class="abstract-title-text">Codeforces Round 995 题解</span>
             </a>
@@ -630,37 +657,6 @@ A - Penchick and Modern Monument题意给你一个（不严格）递减的序列
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/%E8%83%8C%E5%8C%85/">
-                <span class="abstract-title-text">背包</span>
-            </a>
-            <div class="abstract-content">
-                01背包
-其实这个是我在刷了一部分题后重新写的，我长话短说，感觉不是很适合入门但是可以看看
-
-问题导入现在在你面前有 nnn 个物品，每个物品有两个属性：价值 v，与体积 w。你有一个大小为 mmm 的背包，求你能获得的最大的价值
-analysis现在直接令 dp[i] 表示大小为 iii 的背包能获取的最大的价值，显然我们要求的是 dp[m].
-我们扫一遍所有的物品，对于每一个物品，我们只有两个决策，装进背包和不装。这两种决策都可能对已有的最优解们 dp[i] 产生影响，于是我们可以得到以下的两种可能。
-
-dp[i] &lt;- dp[i] 不装进背包, 此时的变化就是没有变化.
-dp...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/04">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/11/04</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="背包">背包</a>
-        <a class="post-tag" href="javascript:void(0);" data-tags="动态规划">动态规划</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">NEXT &gt;</a>
@@ -713,13 +709,21 @@ dp...
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 13
+        Total : 14
         </div>
         <!-- search  -->
     </div>
     <div class="post-archive">
+            <div class="archive-year"> 2025 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/23</span>
+            <a class="archive-post-title" href="/Codeforces-Round-998-%E9%A2%98%E8%A7%A3/">Codeforces Round 998 题解</a>
+        </li>
+                </ul>
             <div class="archive-year"> 2024 </div>
             <ul class="year-list">
         <li class="archive-post-item">
